@@ -3,6 +3,7 @@
 $DB_USER = "root";
 $DB_PASSWORD = "TartMuffin97";
 
+$DB_NAME = "camagru_db";
 $DB_SERVER = "127.0.0.1";
 $DB_PORT = "3306";
 $DB_CHARSET = "utf8";
