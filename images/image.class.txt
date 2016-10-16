@@ -1,0 +1,41 @@
+<================================================== image Class =======================================================>
+summary:
+    This class is used to represent the table 'image_tbl' in the Camagru database.
+
+Creating a image object ------------------------------------------------------------------------------------------------
+    E.g.
+        $img = new image($id, $name, $path, $likes, $pdo);
+
+    * $pdo is a PDO object that the image instance will use to connect to the database.
+
+methods ----------------------------------------------------------------------------------------------------------------
+    function __get($name)
+        This function will return the value of the id, name, path, likes or null depending on the argument passed.
+        E.g.
+            $img = new image($id, $name, $path, $likes, $pdo); // Create a image object
+            $id = $img->__get("id"); // Returns the id of the image object
+            $id = $img->__get("name"); // Returns the name of the image object
+            $id = $img->__get("path"); // Returns the path of the image object
+            $id = $img->__get("likes"); // Returns the number of likes the image object has
+            $id = $img->__get("ice-cream"); // Returns null since there is no 'ice-cream' field
+
+    function __set($name, $value)
+        This function will update the value of the name, path or likes locally and in the database depending on the
+        arguments passed.
+        E.g.
+            $img = new image($id, $name, $path, $likes, $pdo); // Create a image object
+            $img->__set("name", "Home"); // Sets the name of the image object to "Home"
+            $img->__set("path", "imgs/Home.png"); // Sets the path of the image object to "imgs/Home.png"
+            $img->__set("likes", 100); // Sets the number of likes the image object has to 100
+
+    function __toString()
+        This function will just return the path of the image object.
+        E.g.
+            $img = new image($id, $name, $path, $likes, $pdo); // Create a image object
+            echo $img; // Prints the image object's path
+
+    function Doc()
+        This function will return the documentation on the image class.
+        E.g.
+            echo image::Doc(); // Prints the image class's documentation
+<======================================================================================================================>
