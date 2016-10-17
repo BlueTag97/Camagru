@@ -6,13 +6,15 @@ class image
     private $name;
     private $likes;
     private $id;
+    private $public;
     private $pdo;
 
-    public function __construct($id, $name, $path, $likes, PDO $pdo)
+    public function __construct($id, $name, $path, $public, $likes, PDO $pdo)
     {
         $this->id = $id;
         $this->name = $name;
         $this->path = $path;
+        $this->public = $public;
         $this->likes = $likes;
         $this->pdo = $pdo;
     }
@@ -27,6 +29,8 @@ class image
             return $this->path;
         else if ($name == "likes")
             return $this->likes;
+        else if ($name == "public")
+            return $this->public;
         else
             return null;
     }
@@ -75,6 +79,23 @@ class image
                 WHERE image_id = :img_id;
             ");
             $statement->bindParam(":img_likes", $value);
+            $statement->bindParam(":img_id", $this->id);
+            if ($statement->execute() == true)
+            {
+                $this->likes = $value;
+                return true;
+            }
+            else
+                return false;
+        }
+        else if ($name == "public")
+        {
+            $statement = $this->pdo->prepare("
+                UPDATE image_tbl
+                SET image_public = :img_public
+                WHERE image_id = :img_id;
+            ");
+            $statement->bindParam(":img_public", $value);
             $statement->bindParam(":img_id", $this->id);
             if ($statement->execute() == true)
             {

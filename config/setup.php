@@ -15,6 +15,7 @@ function Setup($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_NAME)
           image_id INT AUTO_INCREMENT NOT NULL,
           image_name VARCHAR (50) NOT NULL,
           image_path VARCHAR (60) NOT NULL,
+          image_public BOOLEAN NOT NULL DEFAULT TRUE, 
           image_likes INT NOT NULL DEFAULT 0,
           PRIMARY KEY (image_id)
         );
