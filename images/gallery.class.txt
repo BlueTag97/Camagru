@@ -1,0 +1,62 @@
+<================================================== gallery Class =====================================================>
+Summary:
+    This class is suppose to represent the 'gallery_tbl' table in the Camagru database.
+
+Creating a gallery object ----------------------------------------------------------------------------------------------
+    E.g.
+        $gallery = new gallery($user_id, $pdo);
+
+        * $user_id is the id of the user that the gallery belongs to.
+        * $pdo is the PDO object that the gallery instance will use to communicate with the database.
+
+Methods ----------------------------------------------------------------------------------------------------------------
+    function __get($name)
+        This function will return the user's ID or an array of image objects depending on the argument passed.
+        E.g.
+            $gallery = new gallery($user_id, $pdo); // Create a new gallery object
+            $user_id = $gallery->__get("user_id"); // Returns the user's ID
+            $images = $gallery->__get("images"); // Returns and array of image objects
+
+    function GetImageById($id)
+        This function will return an image object with the corresponding id.
+        E.g.
+            $gallery = new gallery($user_id, $pdo); // Create a new gallery object
+            $image = $gallery->GetImageById(1); // Returns an image with the id of 1
+
+    function GetImageByName($name)
+        This function will return an image object with the corresponding name.
+        E.g.
+            $gallery = new gallery($user_id, $pdo); // Create a new gallery object
+            $image = $gallery->GetImageByName("Vacation"); // Returns an image with the name 'Vacation'
+
+    function GetImageByPath($path)
+        This function will return an image object with the corresponding path.
+        E.g.
+            $gallery = new gallery($user_id, $pdo); // Create a new gallery object
+            $image = $gallery->GetImageByPath("img/Vacation.png"); // Returns a image with the path 'img/Vacation.png'
+
+    function AddImage($name, $path, $public)
+        This function adds a new image to the gallery, the changes will reflect in the database as well.
+        E.g.
+            $gallery = new gallery($user_id, $pdo); // Create a new gallery object
+            $gallery->AddImage("Vacation", "img/Vacation.png", true); // Adds a image called "Vacation" with the path
+                "img/Vacation.png" that is visible to the public (stated by the true value)
+
+    function DeleteImage($id)
+        This function deletes an image with the corresponding id. The changes will reflect in the database.
+        E.g.
+            $gallery = new gallery($user_id, $pdo); // Create a new gallery object
+            $gallery->DeleteImage(1); // Deletes the image with the ID of 1
+
+    function __toString()
+        This function will return the string representation of the gallery object.
+        E.g.
+            $gallery = new gallery($user_id, $pdo); // Create a new gallery object
+            echo $gallery; // Displays the user's ID and the number of images in the gallery
+
+    function Doc()
+        This function will return the gallery class's documentation.
+        E.g.
+            $gallery = new gallery($user_id, $pdo); // Create a new gallery object
+            echo gallery::Doc(); // Displays the gallery class's documentation
+<======================================================================================================================>
