@@ -22,10 +22,18 @@ function Setup($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_NAME)
     ");
 
     $pdo->query("
+        CREATE TABLE IF NOT EXISTS user_tbl(
+          user_id INT AUTO_INCREMENT NOT NULL,
+          PRIMARY KEY (user_id)
+        );
+    ");
+
+    $pdo->query("
         CREATE TABLE IF NOT EXISTS gallery_tbl(
           image_id INT NOT NULL,
           user_id INT NOT NULL,
-          FOREIGN KEY (image_id) REFERENCES image_tbl(image_id)
+          FOREIGN KEY (image_id) REFERENCES image_tbl(image_id),
+          FOREIGN KEY (user_id) REFERENCES user_tbl(user_id)
         );
     ");
 }
