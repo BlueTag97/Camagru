@@ -12,7 +12,10 @@ class gallery
     {
         $this->user_id = $user_id;
         $this->pdo = $pdo;
-        $this->images = $this->GetImages();
+        if ($user_id != -1)
+            $this->images = $this->GetImages();
+        else
+            $this->images = $this->GetAllImages();
     }
 
     private function GetImages()
@@ -40,6 +43,24 @@ class gallery
                     $this->pdo
                 ));
             }
+        }
+        return $imgs;
+    }
+
+    private function GetAllImages()
+    {
+        $imgs = array();
+        $results = $this->pdo->query("SELECT * FROM image_tbl WHERE image_public = TRUE;")->fetchAll();
+        foreach ($results as $result)
+        {
+            array_push($imgs, new image(
+                $result["image_id"],
+                $result["image_name"],
+                $result["image_path"],
+                $result["image_public"],
+                $result["image_likes"],
+                $this->pdo
+            ));
         }
         return $imgs;
     }

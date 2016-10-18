@@ -1,0 +1,53 @@
+.GalleryTable{
+    width: 80%;
+    left: 10%;
+    top: 5%;
+    position: absolute;
+    z-index: 0;
+}
+
+.NonSelectedImage{
+    width: 100%;
+}
+
+.SelectedImage{
+    width: 60%;
+    height: 80%;
+    left: 20%;
+    top: 10%;
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    display: none;
+}
+
+.SelectedImage > button{
+    width: 90%;
+    left: 5%;
+    top: 90%;
+    position: absolute;
+}
+
+#SelectedImageImg{
+    width: 50%;
+    height: 75%;
+    left: 5%;
+    top: 5%;
+    position: absolute;
+}
+
+#SelectedImageLabel{
+    width: 50%;
+    height: 10%;
+    left: 5%;
+    top: 80%;
+    position: absolute;
+}
+
+#SelectedImageLikes{
+    width: 30%;
+    height: 10%;
+    left: 60%;
+    top: 5%;
+    position: absolute;
+}

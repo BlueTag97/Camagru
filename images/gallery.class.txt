@@ -6,7 +6,8 @@ Creating a gallery object ------------------------------------------------------
     E.g.
         $gallery = new gallery($user_id, $pdo);
 
-        * $user_id is the id of the user that the gallery belongs to.
+        * $user_id is the id of the user that the gallery belongs to. Note that setting user_id to -1 will create a
+          gallery that contains all public images instead of just one user's.
         * $pdo is the PDO object that the gallery instance will use to communicate with the database.
 
 Methods ----------------------------------------------------------------------------------------------------------------
